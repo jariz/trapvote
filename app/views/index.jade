@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    canvas#visual-canvas
+    .hidden#threed-webgl-renderer
+    audio.hidden#music(@ended="next()", autoplay)
+    .player-wrapper(v-cloak)
+        .player
+            .header
+                img(src="https://submit.trapped.io/img/logo.png")
+                h3 Half year competition
+                if !winnersMode
+                    =round
+                    |  round of
+                    | Teasermixes
+                else
+                    | Final round (with full mixes)
+            .info
+                h4 Now Playing
+                p 
+                    if !winnersMode
+                        |  Teaser
+                    | Mix {{index+1}}/{{playlist.length}}
+                h4(:class="{invisible: !playlist[index].tracklist}") Tracklist
+                .tracklist
+                    | {{playlist[index].tracklist}}
+            .btns
+                a.btn(@click="prev()")
+                    i.fa.fa-step-backward
+                a.btn.orange(@click="upvote(playlist[index])", :class="{ disabled: votingDisabled }")
+                    i.fa.fa-arrow-up
+                a.btn.teal(:href="playlist[index].url", download=(winnersMode ? 'full' : 'teaser')+"-mix-{{playlist[index].id.substring(0, 5)}}.mp3")
+                    i.fa.fa-download
+                a.btn(@click="next()")
+                    i.fa.fa-step-forward

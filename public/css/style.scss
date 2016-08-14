@@ -1,0 +1,128 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:400,700';
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow: hidden;
+    background:#000;
+    font-family:Roboto, sans-serif;
+}
+
+[v-cloak] {
+    display: none !important;
+}
+
+.hidden {
+    display: none;
+}
+
+audio {
+    visibility: hidden;
+}
+
+.player-wrapper {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.player {
+    width:100%;
+    margin:0 10px;
+    max-width:300px;
+    border-radius:5px;
+    background:#fff;
+    overflow:hidden;
+    box-shadow:0px 0px 6px 0px rgba(0, 0, 0, 0.2);
+    
+    .header {
+        background:#212121;
+        padding:15px 10px;
+        text-align: center;
+        color:#fff;
+        font-size:14px;
+        h3 {
+            margin:0;
+            padding:0;
+            margin-bottom:5px;
+            font-size:16px;
+        }
+        img {
+            width:90px;
+            margin-bottom:10px;
+        }
+    }
+    
+    .info {
+        padding:20px 10px;
+        p {
+            margin:0;
+            margin-bottom:10px;
+        }
+        h4 {
+            text-transform: uppercase;
+            font-weight:bold;
+            letter-spacing: 2px;
+            font-size:12px;
+            margin-bottom:3px;
+            &.invisible {
+                opacity:0;
+            }
+        }
+        
+        .tracklist {
+            margin-top:10px;
+            height:200px;
+            white-space: pre;
+            font-size:12px;
+            font-family: monospace;
+            overflow:auto;
+        }
+    }
+    
+    .btns {
+        display:flex;
+    }
+    
+    .btn {
+        cursor:pointer;
+        width:25%;
+        padding:10px 20px;
+        background:#3F51B5;
+        color:#fff;
+        text-align: center;
+        transition:background .25s;
+        
+        &:hover {
+            background:#303F9F;
+        }
+        
+        &.teal {
+            background:#009688;
+            &:hover {
+                background:#00796B;
+            }
+        }
+        
+        &.orange {
+            background: #FF9800;
+            color:#000;
+            &:hover {
+                background:#F57C00;
+            }
+
+            &.disabled {
+                background:#FFE0B2;
+                color: rgba(0,0,0,.4);
+                pointer-events: none;
+            }
+        }
+    }
+}
